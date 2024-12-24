@@ -586,7 +586,7 @@ int main_loop(struct ping_rts *rts, ping_func_set_st *fset, socket_st *sock,
 	char ans_data[4096];
 	struct iovec iov;
 	struct msghdr msg;
-	int cc;
+	int cc;;
 	int next;
 	int polling;
 	int recv_error;
@@ -594,6 +594,9 @@ int main_loop(struct ping_rts *rts, ping_func_set_st *fset, socket_st *sock,
 	iov.iov_base = (char *)packet;
 
 	for (;;) {
+		if (!(rts->npackets)){
+			rts->packets = 4;
+		}
 		/* Check exit conditions. */
 		if (rts->exiting)
 			break;
