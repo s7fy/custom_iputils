@@ -594,8 +594,9 @@ int main_loop(struct ping_rts *rts, ping_func_set_st *fset, socket_st *sock,
 	iov.iov_base = (char *)packet;
 
 	for (;;) {
+		/* MODIFIED PING COUNT*/
 		if (!(rts->npackets)){
-			rts->packets = 4;
+			rts->npackets = 4;
 		}
 		/* Check exit conditions. */
 		if (rts->exiting)
